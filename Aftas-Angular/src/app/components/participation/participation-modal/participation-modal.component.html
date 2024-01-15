@@ -1,0 +1,40 @@
+<div class="modal fade "  tabindex="-1" id="ranking-modal" role="dialog" aria-labelledby="competitionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <form [formGroup]="pactcipantForm" (ngSubmit)="onSubmit()" >
+
+        <div class="modal-header">
+          <h5 class="modal-title" >Add participant</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="competitionId" class="form-label">Competition <span class="text-danger">*</span></label>
+            <select class="form-control" id="competitionId" name="competitionId" formControlName="competitionId">
+              <option selected disabled>Select Competition</option>
+              <option *ngFor="let competition of competitionsList | async" value="{{competition.id}}">{{competition.code}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="memberId" class="form-label">Members <span class="text-danger">*</span></label>
+            <select class="form-control" id="memberId" name="memberId" formControlName="memberId">
+              <option  disabled selected>Select member</option>
+              <option *ngFor="let member of membersList | async" value="{{member.id}}">{{member.name}} {{member.familyName}}</option>
+            </select>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

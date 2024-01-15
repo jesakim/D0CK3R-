@@ -1,0 +1,40 @@
+<div class="container mt-5 card">
+  <div class="card-header">
+    <h4>Hunt</h4>
+  </div>
+  <div class="card-body mt-5">
+    <form [formGroup]="huntForm" (submit)="onSubmit()">
+      <div class="d-flex justify-content-between mb-3">
+        <div>
+          <label for="competitionSelect">Select Competition:</label>
+          <select id="competitionSelect" class="form-control" formControlName="competitionId" [(ngModel)]="selectedCompetitionId" (change)="onCompetitionChange()">
+            <option *ngFor="let competition of competitions" [value]="competition.id">{{ competition.code }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="memberSelect">Select Member:</label>
+          <select id="memberSelect" class="form-control" formControlName="memberId">
+            <option *ngFor="let member of members | async" [value]="member.id">{{ member.name+" " + member.familyName }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="fishSelect">Select Fish:</label>
+          <select id="fishSelect" class="form-control" formControlName="fishId">
+            <option *ngFor="let fish of fishes | async" [value]="fish.id">{{ fish.name }}</option>
+          </select>
+
+
+        </div>
+        <div>
+          <label for="averageWeight">Fish Average Weight</label>
+          <input type="number" id="averageWeight" class="form-control" formControlName="averageWeight"/>
+
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Add hunt
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container mt-5 card">
+  <div class="card-header">
+    <h4>Participations</h4>
+  </div>
+  <div class="card-body mt-5">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="d-flex">
+        <label for="competitionSelect">Select Competition:</label>
+        <select id="competitionSelect" class="form-control"  [(ngModel)]="selectedCompetitionId" (change)="loadRankingsByCompetition()">
+          <option *ngFor="let competition of competitionsList | async" [value]="competition.id" >{{ competition.code }}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ranking-modal">
+        Add participation
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table id="example" class="table">
+        <thead>
+        <tr>
+          <th>Member Name</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr *ngFor="let ranking of rankingsList | async">
+          <td>{{ ranking.member.name }} {{ ranking.member.familyName }}</td>
+          <td>{{ ranking.score }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr></tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<app-participation-modal></app-participation-modal>

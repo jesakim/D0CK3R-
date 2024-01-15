@@ -1,0 +1,55 @@
+<div class="modal fade "  tabindex="-1" id="competition-modal" role="dialog" aria-labelledby="competitionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <form [formGroup]="competitionForm" (ngSubmit)="onSubmit()"               >
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="competitionModalLabel">Create Competition</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="mb-3">
+            <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="date" formControlName="date" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="startTime" class="form-label">Start Time <span class="text-danger">*</span></label>
+            <input type="time" class="form-control" id="startTime" formControlName="startTime" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="endTime" class="form-label">End Time <span class="text-danger">*</span></label>
+            <input type="time" class="form-control" id="endTime" formControlName="endTime" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="numberOfParticipants" class="form-label">Number of Participants <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="numberOfParticipants" formControlName="numberOfParticipants" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="location" formControlName="location" required>
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">amount <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="amount" formControlName="amount" required>
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          <button type="submit" *ngIf="!competition" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+          <button *ngIf="competition" type="button" class="btn btn-primary" (click)="onUpdate()">Update</button>
+
+
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
